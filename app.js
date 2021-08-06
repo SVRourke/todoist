@@ -4,6 +4,17 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+// SET UP DOTENV in dev env
+if (process.env.NODE_ENV === "dev") {
+  const dotenv = require("dotenv");
+  dotenv.config();
+}
+
+// require mongoose and configuration
+var mongoose = require("mongoose");
+var mongConf = require("./db/db");
+
+// Router
 var indexRouter = require("./routes/index");
 
 var app = express();
@@ -34,6 +45,19 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+// Connect to db
+const connect = () => {
+  mongoose.connect(mongConf.url, mongConf.params);
+};
+connect();
+
+// handle errors , disconnections and notify of connection
+mongoose.connection.on("error", console.error);
+mongoose.connection.on("disconnected", connect);
+mongoose.connection.once("open", (_) => {
+  console.log("connected");
 });
 
 module.exports = app;
