@@ -1,9 +1,17 @@
 var express = require("express");
+var Todo = require("../db/models/Todo");
 var router = express.Router({ mergeParams: true });
+var mongoose = require("mongoose");
+var Todo = mongoose.model("Todo");
 
 var checkParams = (req, res, next) => {
-  console.log(req.params);
-  res.send("items");
+  Todo.find((err, todos) => {
+    if (err) {
+      res.send(error);
+    } else {
+      res.json(todos);
+    }
+  });
 };
 
 // view all items
