@@ -4,7 +4,7 @@ var router = express.Router({ mergeParams: true });
 var mongoose = require("mongoose");
 var Todo = mongoose.model("Todo");
 
-var checkParams = (req, res, next) => {
+var getTodos = (req, res, next) => {
   Todo.find((err, todos) => {
     if (err) {
       res.send(error);
@@ -14,11 +14,16 @@ var checkParams = (req, res, next) => {
   });
 };
 
+const newTodo = async (req, res, next) => {
+  // const listId = req.params.listId
+  console.log("params", req.body);
+  const nexTD = await Todo.create({ content: req.body.msg });
+  res.sendStatus(200);
+};
 // view all items
-router.get("/", checkParams);
+router.get("/", getTodos);
 // new item
-
-// router.post("/", newTodo);
+router.post("/", newTodo);
 
 // mark item done
 // router.post("/", completeTodo);
