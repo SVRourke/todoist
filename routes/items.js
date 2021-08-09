@@ -7,7 +7,7 @@ var Todo = mongoose.model("Todo");
 var getTodos = (req, res, next) => {
   Todo.find((err, todos) => {
     if (err) {
-      res.send(error);
+      res.send(err);
     } else {
       res.json(todos);
     }
