@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "dev") {
 
 // require mongoose and configuration
 var mongoose = require("mongoose");
-var mongConf = require("./db/db");
+var mongConf = require("./db/dbConf");
 
 // Router
 var indexRouter = require("./routes/index");
