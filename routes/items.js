@@ -18,7 +18,8 @@ const newTodo = async (req, res, next) => {
   // const listId = req.params.listId
   console.log("params", req.body);
   const nexTD = await Task.create({ content: req.body.msg });
-  res.sendStatus(200);
+  // res.sendStatus(200);
+  res.redirect("back");
 };
 // view all items
 router.get("/", getTodos);
