@@ -1,15 +1,15 @@
 var express = require("express");
-var Todo = require("../db/models/Todo");
+var { Task } = require("../db/models/Todo");
 var router = express.Router({ mergeParams: true });
 var mongoose = require("mongoose");
-var Todo = mongoose.model("Todo");
+var Task = mongoose.model("Task");
 
 var getTodos = (req, res, next) => {
-  Todo.find((err, todos) => {
+  Task.find((err, tasks) => {
     if (err) {
       res.send(err);
     } else {
-      res.json(todos);
+      res.json(tasks);
     }
   });
 };
@@ -17,7 +17,7 @@ var getTodos = (req, res, next) => {
 const newTodo = async (req, res, next) => {
   // const listId = req.params.listId
   console.log("params", req.body);
-  const nexTD = await Todo.create({ content: req.body.msg });
+  const nexTD = await Task.create({ content: req.body.msg });
   res.sendStatus(200);
 };
 // view all items
