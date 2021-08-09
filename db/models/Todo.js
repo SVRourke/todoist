@@ -2,9 +2,22 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const todoSchema = new Schema({
+const taskSchema = new Schema({
   content: String,
-  done: Boolean,
+  done: { type: Boolean, default: false },
 });
 
-module.exports = mongoose.model("Todo", todoSchema);
+module.exports = mongoose.model("Task", taskSchema);
+
+const listSchema = new Schema({
+  name: String,
+  tasks: [taskSchema],
+});
+
+module.exports = mongoose.model("List", listSchema);
+
+const userSchema = new Schema({
+  name: String,
+  lists: [listSchema],
+});
+module.exports = mongoose.model("User", userSchema);
