@@ -7,4 +7,4 @@ const Lists = new Schema({
   tasks: [Task],
 });
 
-const List = (module.exports = mongoose.model("List", Lists));
+module.exports = mongoose.model("List", Lists);
