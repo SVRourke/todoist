@@ -1,5 +1,5 @@
 var express = require("express");
-var { Task } = require("../db/models/Models");
+var { Task } = require("../db/models/Tasks");
 var router = express.Router({ mergeParams: true });
 var mongoose = require("mongoose");
 var Task = mongoose.model("Task");
