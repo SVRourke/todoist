@@ -9,3 +9,14 @@ content-type: application/json
 {
     "msg": "clean room"
 }
+
+
+
+# Create a list
+
+POST http://localhost:3000/lists/
+content-type: application/json
+
+{
+    "name": "Project 1"
+}
