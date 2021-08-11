@@ -7,3 +7,5 @@ const taskSchema = new Schema({
 });
 
 module.exports = mongoose.model("Task", taskSchema);
+
+// add method to toggle done
