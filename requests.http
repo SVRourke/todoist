@@ -1,22 +1,26 @@
 # Get A list's items needs work
-GET http://localhost:3000/lists/2/items
+GET http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks
 
 # Create a todo
 
-POST http://localhost:3000/lists/3/items
+POST http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/new
 content-type: application/json
 
 {
-    "msg": "clean room"
+    "task": "add styles for small screens"
 }
 
 
 
-# Create a list
 
+# list index
+GET http://localhost:3000/lists/
+
+# Create a list
 POST http://localhost:3000/lists/
 content-type: application/json
 
 {
-    "name": "Project 1"
+    "name": "Project 2"
 }
+
