@@ -4,6 +4,6 @@ const List = require("./Lists");
 
 const userSchema = new Schema({
   name: String,
-  lists: [listSchema],
+  lists: [List.schema],
 });
 module.exports = mongoose.model("User", userSchema);
