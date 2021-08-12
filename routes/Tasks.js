@@ -26,9 +26,6 @@ router.post("/new", (req, res, next) => {
   });
 });
 
-// mark item done
-// router.post("/", completeTodo);
-
 // delete item
 router.delete("/:itemId", (req, res) => {
   List.findById(req.params.listId, (err, list) => {
@@ -37,6 +34,19 @@ router.delete("/:itemId", (req, res) => {
 
     task.remove((err) => {
       if (err) res.json({ error: err });
+      res.sendStatus(200);
+    });
+  });
+});
+
+// mark item done
+router.post("/:itemId/toggle", (req, res) => {
+  List.findById(req.params.listId, (err, list) => {
+    if (err) res.json({ error: err });
+    const task = list.tasks.id(req.params.itemId);
+    task.done = !task.done;
+    task.save((err) => {
+      if (err) res.json({ error: error });
       res.sendStatus(200);
     });
   });
