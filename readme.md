@@ -1,24 +1,4 @@
-<!-- Planning -->
-
-# What I Need,
-
-- lists
-- items
-
-item actions:
-create
-edit
-delete
-mark done
-
-list actions:
-create
-edit
-delete
-add item
-
 <!-- user -->
-
 {
 \_id: 03204204082082820828282
 name: "Sam",
