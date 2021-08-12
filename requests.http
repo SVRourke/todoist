@@ -1,16 +1,17 @@
-# Get A list's items needs work
+# Get A list's Tasks
 GET http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks
 
-# Create a todo
+# Create a Task
 
 POST http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/new
 content-type: application/json
 
 {
-    "task": "add styles for small screens"
+    "task": "non async test"
 }
 
-
+# Delete a Task
+DELETE http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/61150e97879a7211529bc933
 
 
 # list index
