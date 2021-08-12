@@ -1,8 +1,8 @@
 # Get A list's Tasks
 GET http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks
 
-# Create a Task
 
+# Create a Task
 POST http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/new
 content-type: application/json
 
@@ -10,12 +10,17 @@ content-type: application/json
     "task": "non async test"
 }
 
-# Delete a Task
-DELETE http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/61150e97879a7211529bc933
 
+# Delete a Task
+DELETE http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/6113c5cbe543f57d67059c8f
+
+
+# Toggle Task
+POST http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/6113c5cbe543f57d67059c8f/toggle
 
 # list index
 GET http://localhost:3000/lists/
+DELETE http://localhost:3000/lists/6113be4a694a365e1db2063f/tasks/61150e97879a7211529bc933
 
 # Create a list
 POST http://localhost:3000/lists/
