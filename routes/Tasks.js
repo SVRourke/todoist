@@ -17,7 +17,7 @@ router.get("/", (req, res, next) => {
 });
 
 // new item
-router.post("/new", async (req, res, next) => {
+router.post("/new", (req, res, next) => {
   List.findById(req.params.listId, (err, list) => {
     if (err) res.json({ error: err });
     list.tasks.push(new Task({ content: req.body.task }));
@@ -30,17 +30,17 @@ router.post("/new", async (req, res, next) => {
 // router.post("/", completeTodo);
 
 // delete item
-// router.delete("/:itemId", (req, res) => {
-//   Task.find(
-//     { _id: req.params.itemId },
-//     (err,
-//     (task) => {
-//       if (err) res.json({ error: err });
-//       task.remove();
-//       res.send(301);
-//     })
-//   );
-// });
+router.delete("/:itemId", (req, res) => {
+  List.findById(req.params.listId, (err, list) => {
+    if (err) res.json({ error: err });
+    const task = list.tasks.id(req.params.itemId);
+
+    task.remove((err) => {
+      if (err) res.json({ error: err });
+      res.sendStatus(200);
+    });
+  });
+});
 
 // update item
 // router.patch("/", updateTodo);
