@@ -1,0 +1,16 @@
+# index
+GET http://localhost:3000/users
+
+# Create
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "name": "Sam"
+}
+
+# Update
+
+# Delete
+
+# 
