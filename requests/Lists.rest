@@ -1,0 +1,20 @@
+
+
+# LIST REQUESTS
+# LIST REQUESTS
+# LIST REQUESTS
+
+# Index (for a user)
+GET http://localhost:3000/lists/
+
+# Create a list
+POST http://localhost:3000/lists/
+content-type: application/json
+
+{
+    "name": "Project 2"
+}
+
+# Update
+
+# Delete
