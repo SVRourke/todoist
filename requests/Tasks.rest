@@ -1,0 +1,27 @@
+@listId = 6113be4a694a365e1db2063f
+@taskId = 6113c5cbe543f57d67059c8f
+@userId = ""
+
+
+# Tasks Index (for a list)
+GET http://localhost:3000/lists/{{listId}}/tasks
+
+
+# Create
+POST http://localhost:3000/lists/{{listId}}/tasks/new
+content-type: application/json
+
+{
+    "task": "non async test"
+}
+
+# Update
+
+# Toggle Task
+POST http://localhost:3000/lists/{{listId}}/tasks/{{taskId}}/toggle
+
+# Delete a Task
+DELETE http://localhost:3000/lists/{{listId}}/tasks/{{taskId}}
+
+
+
