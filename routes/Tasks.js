@@ -2,10 +2,10 @@ var express = require("express");
 var router = express.Router({ mergeParams: true });
 var mongoose = require("mongoose");
 
-var { List } = require("../db/models/Lists");
+var { List } = require("../models/Lists");
 var List = mongoose.model("List");
 
-var { Task } = require("../db/models/Tasks");
+var { Task } = require("../models/Tasks");
 var Task = mongoose.model("Task");
 
 // view all items
