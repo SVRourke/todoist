@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
 var itemRouter = require("./Tasks");
-var List = require("../db/models/Lists");
+var List = require("../models/Lists");
 
 /* Index. */
 router.get("/", (req, res, next) => {
