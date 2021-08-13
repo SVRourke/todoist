@@ -1,14 +1,14 @@
-
+@userId = 61168bff7865c1053870d708
 
 # LIST REQUESTS
 # LIST REQUESTS
 # LIST REQUESTS
 
 # Index (for a user)
-GET http://localhost:3000/lists/
+GET http://localhost:3000/users/{{userId}}/lists/
 
 # Create a list
-POST http://localhost:3000/lists/
+POST http://localhost:3000/users/{{userId}}/lists
 content-type: application/json
 
 {
