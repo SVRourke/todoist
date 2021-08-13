@@ -1,9 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-var userRouter = require("./users");
-var listRouter = require("./lists");
+var userRouter = require("./Users");
+var listRouter = require("./Lists");
 var taskRouter = require("./Tasks");
+
 listRouter.use("/:listId/tasks", taskRouter);
 
 router.use("/users", userRouter);
