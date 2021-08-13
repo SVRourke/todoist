@@ -10,7 +10,12 @@ content-type: application/json
 }
 
 # Update
+PATCH http://localhost:3000/users/61168bff7865c1053870d708
+content-type: application/json
 
+{
+    "name": "Samuel"
+}
 # Delete
 
 # 
