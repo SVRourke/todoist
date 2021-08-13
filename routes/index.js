@@ -6,6 +6,7 @@ var listRouter = require("./Lists");
 var taskRouter = require("./Tasks");
 
 listRouter.use("/:listId/tasks", taskRouter);
+userRouter.use("/:userId/lists", listRouter);
 
 router.use("/users", userRouter);
 router.use("/lists", listRouter);
