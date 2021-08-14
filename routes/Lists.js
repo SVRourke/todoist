@@ -3,6 +3,7 @@ var router = express.Router({ mergeParams: true });
 var mongoose = require("mongoose");
 var itemRouter = require("./Tasks");
 var List = require("../models/Lists");
+var User = require("../models/Users");
 
 /* Index. */
 // router.get("/", (req, res, next) => {
@@ -18,19 +19,20 @@ var List = require("../models/Lists");
 // });
 
 /* Create. */
-router.post("/", (req, res) => {
-  // console.log("PARAMS", req.params);
-  User.findById(req.params.userId, (err, user) => {
-    if (err) throw err;
+router.post("/", async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  const list = new List({ name: req.body.name });
 
-    // List.create({ name: req.body.name }, (err, list) => {
-    //   if (err) res.json({ error: err });
-    //   user.lists.push(list._id);
-    //   user.save((err, newUser) => {
-    //     if (err) throw err;
-    //     res.json({ list: list });
-    //   });
-    // });
+  list.save((err, savedList) => {
+    if (err) res.json({ error: err });
+    user.lists.push(list._id);
+    console.log("pushed", user);
+  });
+
+  user.save((err, updatedUser) => {
+    if (err) console.log(err);
+    console.log(updatedUser);
+    res.json({ list: list });
   });
 });
 /* Read. */
