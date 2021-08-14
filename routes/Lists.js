@@ -20,20 +20,27 @@ var User = require("../models/Users");
 
 /* Create. */
 router.post("/", async (req, res) => {
-  const user = await User.findById(req.params.userId);
   const list = new List({ name: req.body.name });
 
   list.save((err, savedList) => {
     if (err) res.json({ error: err });
-    user.lists.push(list._id);
-    console.log("pushed", user);
+    console.log("saved list");
   });
 
-  user.save((err, updatedUser) => {
-    if (err) console.log(err);
-    console.log(updatedUser);
-    res.json({ list: list });
-  });
+  User.findByIdAndUpdate(
+    req.params.userId,
+    { $push: { lists: list._id } },
+    (err, user) => {
+      if (err) res.json({ error: err });
+      res.json({ list, user });
+    }
+  );
+
+  // user.save((err, updatedUser) => {
+  //   if (err) console.log(err);
+  //   console.log(updatedUser);
+  //   res.json({ list: list });
+  // });
 });
 /* Read. */
 /* Update. */
